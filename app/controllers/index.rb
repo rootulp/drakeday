@@ -9,7 +9,7 @@ get '/' do
   if @media.provider == 'soundcloud'
      client = Soundcloud.new(:client_id => 'c47cbaa8d972de10824f44f31fd4b529')
      track_url = @media.url
-    @embed_info = client.get('/oembed', :url => track_url)
+    @embed_info = client.get('/oembed', :url => track_url, :auto_play => true)
   end
 
   erb :index
