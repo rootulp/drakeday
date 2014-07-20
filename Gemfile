@@ -23,3 +23,4 @@ group :test do
 end
 
 gem 'rapgenius'
+gem 'soundcloud'
