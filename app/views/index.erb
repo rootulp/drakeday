@@ -9,4 +9,7 @@
   <% if @embed_info %>
     <%= @embed_info['html'] %> <br>
   <% end %>
+  <% @lines.each do |line| %>
+    <%= line.lyric %> <br>
+  <% end %>
 </div>
