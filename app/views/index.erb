@@ -6,6 +6,7 @@
   <%= @media.type %> <br>
   <%= @media.provider %> <br>
   <%= @media.url %> <br>
-  <%= @embed_info['html'] %> <br>
-
+  <% if @embed_info %>
+    <%= @embed_info['html'] %> <br>
+  <% end %>
 </div>
