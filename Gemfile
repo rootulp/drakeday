@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 # PostgreSQL driver
 gem 'pg'
@@ -21,3 +21,5 @@ group :test do
   gem 'faker'
   gem 'rspec'
 end
+
+gem 'rapgenius'
