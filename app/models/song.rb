@@ -21,12 +21,12 @@ class Song
 
   def new_song
     num = 1 + rand(5)
-    $client.get('/oembed', :url => @new_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 250, :maxheight =>166)
+    $client.get('/oembed', :url => @new_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
   end
 
   def mid_song
     num = 1 + rand(5)
-    $client.get('/oembed', :url => @mid_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 250, :maxheight =>166)
+    $client.get('/oembed', :url => @mid_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
   end
 
 end
