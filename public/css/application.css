@@ -1,23 +1,18 @@
-/*.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
-}
-th {
-  text-align: left;
-}*/
-
-body {
-  background-image: url(http://www.brightsidelive.com/wp-content/uploads/2014/04/drake-to-the-stage-HD-Wallpaper.jpg);
+html { 
+  background: url(http://www.brightsidelive.com/wp-content/uploads/2014/04/drake-to-the-stage-HD-Wallpaper.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
+}
+
+.container {
+  margin: 20px auto;
+  float: left;
+  width: 500px;
+  padding: 0px 20px 20px 20px;
 }
 
 h1 {
   color: #757575;
 }
-
-/*#soundcloud_client {
-  height: 50px;
-  width: 25%;
-}*/
