@@ -1,7 +1,26 @@
+console.log("Hello");
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+    var oldButton = $("#old");
+    var midButton = $("#mid");
+    var newButton = $("#new");
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    $(document).on('click', midButton, function(event) {
+        event.preventDefault();
+        ajax_song();
+      });  
 });
+
+function ajax_song() {
+  var xhr = $.ajax({
+    url: "/mid",
+    type: 'GET'
+  }).done(function(data){
+    var soundCloudClient = $("#soundcloud_client");
+    var dataParsed = $.parseHTML(data);
+    embedable = dataParsed[11];
+    console.log(typeof embedable);
+    console.log( embedable);
+    soundCloudClient.html(embedable);
+  });
+}
+
