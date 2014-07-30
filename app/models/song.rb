@@ -5,7 +5,7 @@ class Song
 
     #NEW
     @new_urls = 
-      [ "https://soundcloud.com/octobersveryown/drake-draft-day",
+      ["https://soundcloud.com/octobersveryown/drake-draft-day",
       "https://soundcloud.com/octobersveryown/drake-0-to-100",
       "https://soundcloud.com/ob-obrien/ob-obrien-2-onthotful-feat-drake",
       "https://soundcloud.com/partyomo/partynextdoor-recognize-feat-drake",
@@ -43,8 +43,16 @@ class Song
       $client.get('/oembed', :url => url, :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
   end
 
-  def get_lyrics
-    songs = RapGenius.search_by_song("")
+  def strip_url(url)
+    url.match(/\A(\S*\/)(.*\z)/) # Split url into two capture groups - second has song info
+    $2.gsub!(/-/, ' ') # Replace dashes with spaces in song title
   end
+
+  def get_lyrics(stripped_url)
+    songs = RapGenius.search(stripped_url)
+    lyrics = songs[0].lines
+  end
+
+
 
 end
