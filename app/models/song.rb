@@ -1,7 +1,7 @@
 class Song
 
   def initialize
-    $client = Soundcloud.new(:client_id => 'c47cbaa8d972de10824f44f31fd4b529')
+    $client = Soundcloud.new(:client_id => ENV['soundcloud_key'])
 
     #NEW
     @new_urls = 
