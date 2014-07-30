@@ -29,11 +29,11 @@ APP_NAME = APP_ROOT.basename.to_s
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
-env_config = YAML.load_file(APP_ROOT.join('config','keys.yaml'))
+# env_config = YAML.load_file(APP_ROOT.join('config','keys.yaml'))
 
-env_config.each do |key, value|
-  ENV[key] = value
-end
+# env_config.each do |key, value|
+#   ENV[key] = value
+# end
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
