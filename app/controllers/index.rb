@@ -16,3 +16,9 @@ get '/mid' do
   @embed_info = song.mid_song
   erb :index
 end
+
+get '/old' do
+  song = Song.new
+  @embed_info = song.old_song
+  erb :index
+end
