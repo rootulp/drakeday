@@ -19,9 +19,9 @@ class Song
       "https://soundcloud.com/octobersveryown/lil-wayne-she-will-feat-drake"]
 
       @old_urls = 
-      ["https://soundcloud.com/aliyahra/drake-successful",
-      "https://soundcloud.com/ladygagaradio-tm-1/drake-forever",  
-      "https://soundcloud.com/clarkelan-blogspot-com/07-drake-fancy-ft-t-i-swizz-beatz",
+      ["https://soundcloud.com/ladygagaradio-tm-1/drake-forever",
+      "https://soundcloud.com/ladygagaradio-tm-1/drake-forever",
+      "https://soundcloud.com/ladygagaradio-tm-1/drake-marvin-room",
       "https://soundcloud.com/ladygagaradio-tm-1/drake-marvin-room",
       "https://soundcloud.com/xplayboyx1313/drake-headlines-take-care-2011"]
 
