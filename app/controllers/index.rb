@@ -5,20 +5,8 @@ get '/' do
   erb :homepage
 end
 
-get '/new' do
+get '/:era' do
   song = Song.new
-  @embed_info = song.new_song
-  erb :index
-end
-
-get '/mid' do
-  song = Song.new
-  @embed_info = song.mid_song
-  erb :index
-end
-
-get '/old' do
-  song = Song.new
-  @embed_info = song.old_song
+  @embed_info = song.new_song(params[:era])
   erb :index
 end

@@ -27,19 +27,21 @@ class Song
 
     end
 
-  def new_song
+  def new_song(era)
     num = 1 + rand(5)
-    $client.get('/oembed', :url => @new_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+    case era
+    when 'new'
+      $client.get('/oembed', :url => @new_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+    when 'mid'
+      $client.get('/oembed', :url => @mid_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+    when 'old'
+      $client.get('/oembed', :url => @old_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+    end
   end
 
-  def mid_song
-    num = 1 + rand(5)
-    $client.get('/oembed', :url => @mid_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
-  end
 
-  def old_song
-    num = 1 + rand(5)
-    $client.get('/oembed', :url => @old_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+  def get_lyrics
+    songs = RapGenius.search_by_song("")
   end
 
 end
