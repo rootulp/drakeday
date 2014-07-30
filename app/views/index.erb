@@ -1,3 +1,13 @@
+<div id="soundcloud_embedable">
 <% if @soundcloud_embedable %>
   <%= @soundcloud_embedable['html'] %> <br>
 <% end %>
+</div>
+
+<div id="lyrics">
+<% if @lyrics %>
+  <% @lyrics.each do |line| %>
+    <%= line.lyric %> <br>
+  <% end %>
+<% end %>
+</div>

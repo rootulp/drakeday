@@ -16,10 +16,14 @@ function ajax_song(era) {
         url: "/" + era,
         type: 'GET'
     }).done(function(data){
-        var soundCloudClient = $("#soundcloud_client");
+        var client = $("#soundcloud_client");
+        var lyrics = $("#lyrics");
         var dataParsed = $.parseHTML(data);
-        embedable = dataParsed[11];
-        soundCloudClient.html(embedable);
+        console.log(dataParsed)
+        soundCloudEmbedable = dataParsed[11];
+        songLyrics = dataParsed[13];
+        client.html(soundCloudEmbedable);
+        lyrics.html(songLyrics);
     });
 }
 
