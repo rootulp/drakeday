@@ -27,18 +27,21 @@ class Song
 
     end
 
-  def new_song(era)
+  def soundcloud_url(era)
     num = 1 + rand(5)
     case era
     when 'new'
-      $client.get('/oembed', :url => @new_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+      @new_urls[num]
     when 'mid'
-      $client.get('/oembed', :url => @mid_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+      @mid_urls[num]
     when 'old'
-      $client.get('/oembed', :url => @old_urls[num], :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+      @old_urls[num]
     end
   end
 
+  def soundcloud_embedable(url)
+      $client.get('/oembed', :url => url, :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
+  end
 
   def get_lyrics
     songs = RapGenius.search_by_song("")

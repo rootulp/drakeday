@@ -12,7 +12,6 @@ $(document).ready(function() {
 });
 
 function ajax_song(era) {
-    console.log(era);
     var xhr = $.ajax({
         url: "/" + era,
         type: 'GET'

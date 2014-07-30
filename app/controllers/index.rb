@@ -7,6 +7,7 @@ end
 
 get '/:era' do
   song = Song.new
-  @embed_info = song.new_song(params[:era])
+  @soundcloud_url = song.soundcloud_url(params[:era])
+  @soundcloud_embedable = song.soundcloud_embedable(@soundcloud_url)
   erb :index
 end
