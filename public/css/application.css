@@ -6,13 +6,34 @@ html {
   background-size: cover;
 }
 
-.container {
-  margin: 20px auto;
-  float: left;
-  width: 500px;
-  padding: 0px 20px 20px 20px;
-}
-
 h1 {
   color: #757575;
+}
+
+.all {
+  margin: 20px;
+  padding: 20px;
+  width: 400px;
+}
+
+.right {
+    float: right;
+}
+
+.left{ 
+  float: left;
+}
+
+.navbar {
+   background-color: transparent;
+   background: transparent;
+}
+
+body {
+    background-color: transparent;
+   background: transparent;
+}
+
+.navbar-default {
+  border:none;
 }

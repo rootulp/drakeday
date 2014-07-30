@@ -19,7 +19,6 @@ function ajax_song(era) {
         var client = $("#soundcloud_client");
         var lyrics = $("#lyrics");
         var dataParsed = $.parseHTML(data);
-        console.log(dataParsed)
         soundCloudEmbedable = dataParsed[11];
         songLyrics = dataParsed[13];
         client.html(soundCloudEmbedable);
@@ -27,3 +26,7 @@ function ajax_song(era) {
     });
 }
 
+function gif() {
+    var gifDiv = $("#gif");
+    gif.html('<iframe src="//giphy.com/embed/1aM5GxOF9kJTG" width="500" height="250" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+}

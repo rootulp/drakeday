@@ -53,6 +53,4 @@ class Song
     lyrics = songs[0].lines
   end
 
-
-
 end
