@@ -2,41 +2,19 @@ class Song
 
   def initialize
     $client = Soundcloud.new(:client_id => ENV['soundcloud_key'])
-
-    #NEW
-    @new_urls = 
-      ["https://soundcloud.com/octobersveryown/drake-draft-day",
-      "https://soundcloud.com/octobersveryown/drake-0-to-100",
-      "https://soundcloud.com/ob-obrien/ob-obrien-2-onthotful-feat-drake",
-      "https://soundcloud.com/partyomo/partynextdoor-recognize-feat-drake",
-      "https://soundcloud.com/octobersveryown/drake-trophies"]
-      #MID
-      @mid_urls = 
-      ["https://soundcloud.com/octobersveryown/drake-hold-on-were-going-home",
-      "https://soundcloud.com/octobersveryown/drake-5am-in-toronto",
-      "https://soundcloud.com/octobersveryown/drake-the-motto-feat-lil-wayne",
-      "https://soundcloud.com/octobersveryown/drake-started-from-the-bottom",
-      "https://soundcloud.com/octobersveryown/lil-wayne-she-will-feat-drake"]
-
-      @old_urls = 
-      ["https://soundcloud.com/ladygagaradio-tm-1/drake-forever",
-      "https://soundcloud.com/ladygagaradio-tm-1/drake-forever",
-      "https://soundcloud.com/ladygagaradio-tm-1/drake-marvin-room",
-      "https://soundcloud.com/ladygagaradio-tm-1/drake-marvin-room",
-      "https://soundcloud.com/xplayboyx1313/drake-headlines-take-care-2011"]
-
+    @songs = []
+    songs = RapGenius.search_by_artist("Drake")
+    songs.each do |song|
+      song.media.each do |media|
+        if media.provider == 'soundcloud'
+          @songs << song
+        end
+      end
     end
+  end
 
-  def soundcloud_url(era)
-    num = 1 + rand(5)
-    case era
-    when 'new'
-      @new_urls[num]
-    when 'mid'
-      @mid_urls[num]
-    when 'old'
-      @old_urls[num]
-    end
+  def random_url()
+    song = @songs.sample.media.first.url
   end
 
   def soundcloud_embedable(url)

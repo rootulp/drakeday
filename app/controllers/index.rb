@@ -7,7 +7,8 @@ end
 
 get '/:era' do
   song = Song.new
-  @soundcloud_url = song.soundcloud_url(params[:era])
+  @soundcloud_url = song.random_url
+  # @soundcloud_url = song.soundcloud_url(params[:era])
   stripped_url = song.strip_url(@soundcloud_url)
   @lyrics = song.get_lyrics(stripped_url)
   @soundcloud_embedable = song.soundcloud_embedable(@soundcloud_url)
