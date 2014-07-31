@@ -7,11 +7,11 @@ end
 
 get '/:era' do
   song = Song.new
-  @soundcloud_url = song.random_url
-  # @soundcloud_url = song.soundcloud_url(params[:era])
-  stripped_url = song.strip_url(@soundcloud_url)
-  @lyrics = song.get_lyrics(stripped_url)
-  @soundcloud_embedable = song.soundcloud_embedable(@soundcloud_url)
-  json_object = {soundcloud_embedable: @soundcloud_embedable, lyrics: @lyrics}.to_json
-  #erb :index
+  rg_song_media = song.rg_song_media
+  rg_song = rg_song_media[0]
+  rg_media = rg_song_media[1]
+  sc_url = rg_media.url
+  lyrics = song.lyrics(rg_song.lines)
+  sc = song.sc(sc_url)
+  json_object = {soundcloud_embedable: sc, lyrics: lyrics}.to_json
 end
