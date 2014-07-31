@@ -11,5 +11,5 @@ get '/:era' do
   sc = song.sc(rg_media.url) # Get embedable SC object using rg media url (a soundcloud link)
   sc_stripped = song.extract_track(sc)
   lyrics = song.lyrics(rg_song.lines) # Take RG lyrics and throw them into one long string
-  json_object = {soundcloud_embedable: sc, lyrics: lyrics}.to_json
+  json_object = {sc_track: sc_stripped, lyrics: lyrics}.to_json
 end
