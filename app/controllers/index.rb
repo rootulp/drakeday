@@ -11,5 +11,6 @@ get '/:era' do
   stripped_url = song.strip_url(@soundcloud_url)
   @lyrics = song.get_lyrics(stripped_url)
   @soundcloud_embedable = song.soundcloud_embedable(@soundcloud_url)
-  erb :index
+  json_object = {soundcloud_embedable: @soundcloud_embedable, lyrics: @lyrics}.to_json
+  #erb :index
 end

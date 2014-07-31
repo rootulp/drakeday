@@ -51,6 +51,12 @@ class Song
   def get_lyrics(stripped_url)
     songs = RapGenius.search(stripped_url)
     lyrics = songs[0].lines
+    text = " "
+    lyrics.each do |line|
+      text += line.lyric
+    end
+    puts text
+    return text
   end
 
 end
