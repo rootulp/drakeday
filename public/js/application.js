@@ -20,10 +20,8 @@ function ajax_song(era) {
         var client = $("#soundcloud_client");
         var lyrics = $("#lyrics");
         var dataParsed = $.parseJSON( data );
-        console.log(dataParsed);
         soundCloudEmbedable = dataParsed.soundcloud_embedable.html;
         songLyrics = dataParsed.lyrics;
-        console.log(songLyrics);
         client.html(soundCloudEmbedable);
         lyrics.html(songLyrics);
     }).fail(function(data){
