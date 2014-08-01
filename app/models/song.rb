@@ -5,17 +5,17 @@ class Song
     @songs = []
     songs = RapGenius.search_by_artist("Drake")
     songs.each do |song|
-        @songs << song
+      @songs << song
     end
   end
 
-  def rg_song_media
+  def rg_song_media_sc
     song = @songs.sample
     media = song.media.sample
     if media.provider == 'soundcloud'
       return [song, media]
     else
-      rg_song_media
+      rg_song_media_sc
     end
   end
 
