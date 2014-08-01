@@ -14,19 +14,13 @@ def lyrics(lines)
   return text
 end
 
-
-def sc(url)
-  $client.get('/oembed', :url => url, :auto_play => true, :show_comments => false, :maxwidth => 365, :maxheight =>166)
-end
-
-def resolve_track(url)
-  $client.get('/resolve', :url => url)
-end
-
-def extract_track_sc(html)
-  html_string = html.to_s
-  html_string.match(/tracks%2F(\d*)/) # Grabs just the track number
-  return $1
+def lyrics_for_song(title)
+  song = RapGenius.search_by_title(title).first
+  if song
+    lines = song.lines
+    lyrics = lyrics(lines)
+  end
+  return lyrics
 end
 
 def seed_rapgenius
@@ -54,11 +48,11 @@ def seed_soundcloud
     provider = "soundcloud"
     url = track['permalink_url']
     iframe_info = track['id']
-    # lyrics = "not defined yet"
-    # era = "old"
-    Track.create(title: title, provider: provider, url: url, iframe_info: iframe_info)
+    lyrics = lyrics_for_song(title)
+    Track.create(title: title, provider: provider, url: url, iframe_info: iframe_info, lyrics: lyrics)
   end
 end
 
 seed_rapgenius
 seed_soundcloud
+#lyrics_for_song("0 to 100")
