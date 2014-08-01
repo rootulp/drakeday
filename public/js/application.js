@@ -1,13 +1,15 @@
 $(document).ready(function() {
     console.log("Hello");
     hideSpinner();
-    var oldButton = $("#old");
-    var midButton = $("#mid");
-    var highButton = $("#new");
-    $("#old, #mid, #new").on('click', function() {
+    $("#old").on('click', function() {
         hideButtons();
         showSpinner();
-        ajax_song("old");
+        sc_song();
+    });
+    $("#new").on('click', function() {
+        hideButtons();
+        showSpinner();
+        youtube_song();
     });
 });
 
@@ -27,9 +29,9 @@ function showSpinner() {
     $(".spinner").slideDown();
 }
 
-function ajax_song(era) {
+function sc_song() {
     var xhr = $.ajax({
-        url: "/" + era,
+        url: "/sc",
         type: 'GET'
     }).success(function(data){
         console.log("success");
@@ -47,10 +49,34 @@ function ajax_song(era) {
 
     }).fail(function(data){
         console.log("Failed");
-         setTimeout( "ajax_song('old');", 5000 );
+         setTimeout( "sc_song();", 5000 );
     });
 }
 
+
+function youtube_song() {
+    var xhr = $.ajax({
+        url: "/youtube",
+        type: 'GET'
+    }).success(function(data){
+        console.log("success");
+        var dataParsed = $.parseJSON( data );
+
+        var lyrics = $("#lyrics");
+        var iframeID = $("#youtube_iframe");
+
+        iframe_skeleton = "http://www.youtube.com/embed/" + dataParsed.youtube_track + "?autoplay=1";
+
+        iframeID.attr("src", iframe_skeleton);
+        lyrics.html(dataParsed.lyrics);
+        hideSpinner();
+        setTimeout( "showButtons();", 5000 );
+
+    }).fail(function(data){
+        console.log("Failed");
+         setTimeout( "youtube_song();", 5000 );
+    });
+}
 
 // function gif() {
 //     var gifDiv = $("#gif");
