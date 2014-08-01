@@ -22,8 +22,8 @@ function ajax_song(era) {
         var lyrics = $("#lyrics");
         var iframeID = $("#soundcloud_iframe");
 
-        iframe_skeleton = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + dataParsed.sc_track + "&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"
-        
+        iframe_skeleton = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + dataParsed.sc_track + "&amp;color=ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"
+
         iframeID.attr("src", iframe_skeleton);
         lyrics.html(dataParsed.lyrics);
     }).fail(function(data){
@@ -31,7 +31,8 @@ function ajax_song(era) {
     });
 }
 
-function gif() {
-    var gifDiv = $("#gif");
-    gif.html('<iframe src="//giphy.com/embed/1aM5GxOF9kJTG" width="500" height="250" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
-}
+
+// function gif() {
+//     var gifDiv = $("#gif");
+//     gif.html('<iframe src="//giphy.com/embed/1aM5GxOF9kJTG" width="500" height="250" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
+// }
