@@ -15,6 +15,7 @@ get '/sc' do
 end
 
 get '/youtube' do
-  track = Track.first
-  json_object = {youtube_track: track.iframe_info, lyrics: track.lyrics}.to_json
+  num_tracks = Track.count
+  rand_track = Track.find_by_id(rand(num_tracks))
+  json_object = {youtube_track: rand_track.iframe_info, lyrics: rand_track.lyrics}.to_json
 end
