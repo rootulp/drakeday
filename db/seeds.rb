@@ -4,6 +4,14 @@ def extract_track_youtube(html)
   return $1
 end
 
+def lyrics(lines)
+  text = ""
+  lines.each do |line|
+    text += line.lyric
+  end
+  return text
+end
+
 
 # def sc(url)
 #   $client = Soundcloud.new(:client_id => ENV['soundcloud_key'])
@@ -26,12 +34,14 @@ songs = RapGenius.search_by_artist("Drake")
 songs.each do |song|
   title = song.title
   media = song.media
+  lines = song.lines
+  lyrics = lyrics(lines)
   media.each do |individual_media|
     if individual_media.provider == "youtube"
       provider = "youtube"
       url = individual_media.url
       iframe_info = extract_track_youtube(url)
-      Track.create(title: title, provider: provider, url: url, iframe_info: iframe_info)
+      Track.create(title: title, provider: provider, url: url, iframe_info: iframe_info, lyrics: lyrics)
     end
   end
 end
