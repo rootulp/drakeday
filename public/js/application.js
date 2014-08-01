@@ -1,10 +1,12 @@
 $(document).ready(function() {
     console.log("Hello");
+    hideSpinner();
     var oldButton = $("#old");
     var midButton = $("#mid");
     var highButton = $("#new");
     $("#old, #mid, #new").on('click', function() {
         hideButtons();
+        showSpinner();
         ajax_song("old");
     });
 });
@@ -15,6 +17,14 @@ function hideButtons() {
 
 function showButtons() {
     $("#old, #mid, #new").slideDown();
+}
+
+function hideSpinner() {
+    $(".spinner").slideUp();
+}
+
+function showSpinner() {
+    $(".spinner").slideDown();
 }
 
 function ajax_song(era) {
@@ -32,6 +42,7 @@ function ajax_song(era) {
 
         iframeID.attr("src", iframe_skeleton);
         lyrics.html(dataParsed.lyrics);
+        hideSpinner();
         setTimeout( "showButtons();", 5000 );
 
     }).fail(function(data){

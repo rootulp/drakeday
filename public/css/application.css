@@ -17,8 +17,9 @@ h3 {
 }
 
 .right {
-    float: right;
-
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
 
 .left{ 
@@ -26,13 +27,13 @@ h3 {
 }
 
 .navbar {
-   background-color: transparent;
-   background: transparent;
+  background-color: transparent;
+  background: transparent;
 }
 
 body {
-    background-color: transparent;
-   background: transparent;
+  background-color: transparent;
+  background: transparent;
 }
 
 .navbar-default {
@@ -46,7 +47,9 @@ body {
 /*spinner*/
 
 .spinner {
-  margin: 100px auto;
+  /*margin: 100px auto;*/
+  margin-left: auto;
+  margin-right: auto;
   width: 50px;
   height: 30px;
   text-align: center;
