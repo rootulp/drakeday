@@ -18,21 +18,14 @@ function ajax_song(era) {
     }).success(function(data){
         console.log("success");
         var dataParsed = $.parseJSON( data );
-        console.log( dataParsed);
-        var lyrics = $("#lyrics");
-        //var client = $("#soundcloud_client");
-        var iframeID = $("#soundcloud_iframe [0] src");
-        //var iframeSrc = iframeID[0].src;
-        console.log(iframeID)
-        //console.log(iframeSrc)
-        
-        //var res = iframeSrc.replace("77472052", dataParsed.sc_track);
-        //iframeSrc.replaceWith( res );
 
-        //soundCloudEmbedable = dataParsed.soundcloud_embedable.html;
-        songLyrics = dataParsed.lyrics;
-        //client.html(soundCloudEmbedable);
-        lyrics.html(songLyrics);
+        var lyrics = $("#lyrics");
+        var iframeID = $("#soundcloud_iframe");
+
+        iframe_skeleton = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + dataParsed.sc_track + "&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"
+        
+        iframeID.attr("src", iframe_skeleton);
+        lyrics.html(dataParsed.lyrics);
     }).fail(function(data){
         console.log("Failed");
     });
