@@ -6,6 +6,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :provider # Soundcloud or Youtube
       t.string :iframe_info
       t.string :era # Old, Mid, or New
+      t.text :lyrics
  
       t.timestamps
     end
