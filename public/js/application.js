@@ -1,18 +1,3 @@
-$(document).ready(function() {
-    console.log("Hello");
-    hideSpinner();
-    $("#old").on('click', function() {
-        hideButtons();
-        showSpinner();
-        sc_song();
-    });
-    $("#new").on('click', function() {
-        hideButtons();
-        showSpinner();
-        youtube_song();
-    });
-});
-
 function hideButtons() {
     $("#old, #mid, #new").slideUp();
 }
@@ -29,6 +14,22 @@ function showSpinner() {
     $(".spinner").slideDown();
 }
 
+function hideSoundCloud() {
+    $("#soundcloud_iframe").slideUp();
+}
+
+function hideYouTube() {
+    $("#youtube_iframe").slideUp();
+}
+
+function showSoundCloud() {
+    $("#soundcloud_iframe").slideDown();
+}
+
+function showYouTube() {
+    $("#youtube_iframe").slideDown();
+}
+
 function sc_song() {
     var xhr = $.ajax({
         url: "/sc",
@@ -37,15 +38,16 @@ function sc_song() {
         console.log("success");
         var dataParsed = $.parseJSON( data );
 
-        var lyrics = $("#lyrics");
-        var iframeID = $("#soundcloud_iframe");
-
         iframe_skeleton = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + dataParsed.sc_track + "&amp;color=ff5500&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false";
 
-        iframeID.attr("src", iframe_skeleton);
-        lyrics.html(dataParsed.lyrics);
+        $("#soundcloud_iframe").attr("src", iframe_skeleton);
+        $("#lyrics").html(dataParsed.lyrics);
+
         hideSpinner();
-        setTimeout( "showButtons();", 5000 );
+        hideYouTube();
+        showSoundCloud();
+
+        setTimeout( "showButtons();", 2500 );
 
     }).fail(function(data){
         console.log("Failed");
@@ -61,14 +63,15 @@ function youtube_song() {
         console.log("success");
         var dataParsed = $.parseJSON( data );
 
-        var lyrics = $("#lyrics");
-        var iframeID = $("#youtube_iframe");
-
         iframe_skeleton = "http://www.youtube.com/embed/" + dataParsed.youtube_track + "?autoplay=1";
 
-        iframeID.attr("src", iframe_skeleton);
-        lyrics.html(dataParsed.lyrics);
+        $("#youtube_iframe").attr("src", iframe_skeleton);
+        $("#lyrics").html(dataParsed.lyrics);
+
         hideSpinner();
+        hideSoundCloud();
+        showYouTube();
+
         setTimeout( "showButtons();", 2500 );
 
     }).fail(function(data){
@@ -76,3 +79,19 @@ function youtube_song() {
          setTimeout( "youtube_song();", 5000 );
     });
 }
+
+$(document).ready(function() {
+    console.log("Hello");
+    hideSpinner();
+    hideYouTube();
+    $("#old").on('click', function() {
+        hideButtons();
+        showSpinner();
+        sc_song();
+    });
+    $("#new").on('click', function() {
+        hideButtons();
+        showSpinner();
+        youtube_song();
+    });
+});
