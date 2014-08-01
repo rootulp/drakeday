@@ -25,5 +25,5 @@ end
 get '/delete' do
   track_id = session[:current_track]
   rand_track = Track.find_by_id(track_id)
-  p rand_track
+  rand_track.delete
 end
