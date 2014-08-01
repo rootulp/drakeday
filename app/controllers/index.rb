@@ -15,9 +15,6 @@ get '/sc' do
 end
 
 get '/youtube' do
-  song = Song.new
-  rg_song, rg_media =  song.rg_song_media("youtube")
-  youtube_stripped = song.extract_track_youtube(rg_media.url)
-  lyrics = song.lyrics(rg_song.lines) # Take RG lyrics and throw them into one long string
-  json_object = {youtube_track: youtube_stripped, lyrics: lyrics}.to_json
+  track = Track.first
+  json_object = {youtube_track: track.iframe_info, lyrics: track.lyrics}.to_json
 end

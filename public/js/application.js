@@ -53,7 +53,6 @@ function sc_song() {
     });
 }
 
-
 function youtube_song() {
     var xhr = $.ajax({
         url: "/youtube",
@@ -77,8 +76,3 @@ function youtube_song() {
          setTimeout( "youtube_song();", 5000 );
     });
 }
-
-// function gif() {
-//     var gifDiv = $("#gif");
-//     gif.html('<iframe src="//giphy.com/embed/1aM5GxOF9kJTG" width="500" height="250" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>');
-// }
