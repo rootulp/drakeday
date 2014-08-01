@@ -69,7 +69,7 @@ function youtube_song() {
         iframeID.attr("src", iframe_skeleton);
         lyrics.html(dataParsed.lyrics);
         hideSpinner();
-        setTimeout( "showButtons();", 5000 );
+        setTimeout( "showButtons();", 2500 );
 
     }).fail(function(data){
         console.log("Failed");
