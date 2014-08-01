@@ -15,10 +15,12 @@ function showSpinner() {
 }
 
 function hideSoundCloud() {
+    $("#soundcloud_iframe").attr("src", "")
     $("#soundcloud_iframe").slideUp();
 }
 
 function hideYouTube() {
+    $("#youtube_iframe").attr("src", "")
     $("#youtube_iframe").slideUp();
 }
 
