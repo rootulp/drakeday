@@ -1,9 +1,9 @@
 function hideButtons() {
-    $("#old, #mid, #new").slideUp();
+    $("#yt, #sc").slideUp();
 }
 
 function showButtons() {
-    $("#old, #mid, #new").slideDown();
+    $("#yt, #sc").slideDown();
 }
 
 function hideSpinner() {
@@ -86,12 +86,12 @@ $(document).ready(function() {
     console.log("Hello");
     hideSpinner();
     hideYouTube();
-    $("#old").on('click', function() {
+    $("#sc").on('click', function() {
         hideButtons();
         showSpinner();
         sc_song();
     });
-    $("#new").on('click', function() {
+    $("#yt").on('click', function() {
         hideButtons();
         showSpinner();
         youtube_song();
